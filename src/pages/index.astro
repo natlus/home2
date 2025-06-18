@@ -1,11 +1,48 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Prompt from "../components/Prompt.astro";
+import Result from "../components/Result.astro";
+import GitHubRepoFiles from "../components/GitHubRepoFiles.astro";
 ---
 
 <Layout>
-	<Welcome />
+    <div class="flex flex-col gap-1">
+        <Prompt>ls ~/external-links</Prompt>
+        <Result>
+            <a href="https://github.com/natlus">github</a>
+            <a href="https://github.com/natlus/dotfiles">dotfiles</a>
+        </Result>
+
+        <Prompt>cat ~/about.txt</Prompt>
+        <Result>
+            <ul>
+                <li>software dev</li>
+                <li>malmö, sweden</li>
+            </ul>
+        </Result>
+
+        <!-- <Prompt>ls ~/projects/dotfiles</Prompt>
+        <Result>
+            <GitHubRepoFiles owner="natlus" repo="dotfiles" />
+        </Result> -->
+
+        <div class="flex items-center">
+            <Prompt />
+            <span class="mx-1 inline-flex animate-cursor bg-white border-white h-2 w-1"></span>
+        </div>
+    </div>
 </Layout>
+
+<style>
+    a:hover {
+        text-decoration: underline;
+    }
+
+    ul {
+        padding-left: 1rem;
+    }
+
+    li {
+        list-style-type: square;
+    }
+</style>
